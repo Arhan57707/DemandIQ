@@ -1,43 +1,70 @@
-#DemandIQ - Day1 
-# First Retail Dataset Inspection
-import pandas as pd 
+
 from pathlib import Path
+import pandas as pd
 
-#locate file 
-PROJECT_ROOT = Path(__file__).resolve().parent.parent 
-#dataset location 
-DATA_PATH = PROJECT_ROOT/"data"/"raw"/"online_retail_II.xlsx"
-#check if file exists 
-if not DATA_PATH.exists():
-    raise FileNotFoundError(
-        f"Dataset not found at: {DATA_PATH}"
-    )
-# 4. Read the first 10,000 rows
-df = pd.read_excel(
-    DATA_PATH,
-    sheet_name=0,
-    nrows=10000
-)
 
-# 5. Display basic information
-print("\n========== DEMANDIQ DATA INSPECTION ==========")
+# Find the main DemandIQ folder
+PROJECT_ROOT = Path(__file__).resolve().parents[1]
 
-print("\n1. First 5 rows:")
-print(df.head())
+# Location of the original Excel workbook
+DATA_FILE = PROJECT_ROOT / "data" / "raw" / "online_retail_II.xlsx"
 
-print("\n2. Dataset shape:")
-print(df.shape)
 
-print("\n3. Column names:")
-print(df.columns.tolist())
+def inspect_workbook():
 
-print("\n4. Data types:")
-print(df.dtypes)
+    # Check whether the dataset exists
+    if not DATA_FILE.exists():
+        raise FileNotFoundError(
+            f"Dataset not found: {DATA_FILE}"
+        )
 
-print("\n5. Missing values:")
-print(df.isnull().sum())
+    print("=" * 60)
+    print("DEMANDIQ - DATASET INSPECTION")
+    print("=" * 60)
 
-print("\n6. Statistical summary:")
-print(df.describe(include="all"))
+    # Read Excel workbook information
+    excel = pd.ExcelFile(DATA_FILE)
 
-print("\n========== INSPECTION COMPLETE ==========")
+    print("\nWORKSHEETS:")
+    print(excel.sheet_names)
+
+    # Inspect each worksheet separately
+    for sheet in excel.sheet_names:
+
+        print("\n" + "=" * 60)
+        print(f"INSPECTING SHEET: {sheet}")
+        print("=" * 60)
+
+        # Read only the first 5,000 rows for initial inspection
+        df = pd.read_excel(
+            DATA_FILE,
+            sheet_name=sheet,
+            nrows=5000
+        )
+
+        print("\nFIRST 5 ROWS:")
+        print(df.head().to_string(index=False))
+
+        print("\nDATASET DIMENSIONS:")
+        print(df.shape)
+
+        print("\nCOLUMN NAMES:")
+        print(df.columns.tolist())
+
+        print("\nDATA TYPES:")
+        print(df.dtypes.to_string())
+
+        print("\nMISSING VALUES:")
+        print(df.isnull().sum().to_string())
+
+        print("\nUNIQUE VALUES:")
+        print(df.nunique().to_string())
+
+        print("\nDUPLICATE ROWS IN SAMPLE:")
+        print(df.duplicated().sum())
+
+    print("\nINSPECTION COMPLETED!")
+
+
+if __name__ == "__main__":
+    inspect_workbook()

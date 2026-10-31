@@ -1,0 +1,11 @@
+,data_type,missing_count,missing_percent,unique_values
+customer_id,float64,243007,22.77,5942
+description,object,4382,0.41,5698
+stock_code,object,0,0.0,5305
+invoice,object,0,0.0,53628
+invoice_date,datetime64[us],0,0.0,47635
+quantity,int64,0,0.0,1057
+unit_price,float64,0,0.0,2807
+country,str,0,0.0,43
+source_sheet,str,0,0.0,2
+line_value,float64,0,0.0,9113

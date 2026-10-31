@@ -1,0 +1,9 @@
+metric,value
+total_rows,1067371
+total_columns,10
+exact_duplicate_rows,34335
+cancelled_invoice_rows,19494
+negative_quantity_rows,22950
+nonpositive_price_rows,6207
+invalid_invoice_dates,0
+missing_customer_ids,243007
