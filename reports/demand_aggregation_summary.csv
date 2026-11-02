@@ -1,0 +1,12 @@
+metric,value
+clean_transaction_rows,1010539
+unique_products,4984
+first_sales_date,2009-12-01
+last_sales_date,2011-12-09
+calendar_days,739
+observed_product_date_combinations,534499
+dense_product_panel_rows,3084067
+zero_sales_product_days,2549568
+dates_with_any_recorded_sales,604
+dates_without_recorded_sales,135
+total_positive_units_sold,11455912

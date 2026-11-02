@@ -124,3 +124,48 @@ The original dataset remains unchanged.
 - `retail_returns_review.csv`
 - `duplicate_records_review.csv`
 - `data_cleaning_summary.csv`
+
+### Day 4 - Daily Demand Aggregation and Time-Series Preparation
+
+- Aggregated transaction-level data by product and date.
+- Calculated daily units sold for each stock code.
+- Calculated transaction-line and invoice counts.
+- Calculated positive-price gross revenue.
+- Separated units associated with nonpositive or missing prices.
+- Created a product catalogue.
+- Generated a sparse daily product-sales dataset.
+- Generated a dense daily product panel with zero-sales days.
+- Retained a separate daily aggregation containing duplicates.
+- Compared the impact of duplicate handling on measured demand.
+- Generated total daily sales across all products.
+- Created daily and monthly sales visualizations.
+- Implemented aggregation reconciliation and validation checks.
+
+### Day 4 Output Files
+
+- `daily_product_sales.csv`
+- `daily_product_sales_with_duplicates.csv`
+- `daily_product_panel.csv`
+- `product_catalog.csv`
+- `daily_total_sales.csv`
+- `demand_aggregation_summary.csv`
+- `duplicate_sensitivity_summary.csv`
+
+### Time-Series Definition
+
+The forecasting target is observed positive units sold,
+aggregated at the product-day level.
+
+Dates with no recorded transaction are represented as
+zero in the dense product panel.
+
+Products are included from their first recorded sale
+through the final date in the dataset.
+
+Zero recorded sales do not necessarily establish zero
+underlying demand because stock availability and
+stockout information are not available.
+
+Duplicate removal is treated as a documented analytical
+decision and compared against an alternative dataset
+that retains exact duplicate transaction records.
