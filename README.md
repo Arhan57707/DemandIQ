@@ -169,3 +169,70 @@ stockout information are not available.
 Duplicate removal is treated as a documented analytical
 decision and compared against an alternative dataset
 that retains exact duplicate transaction records.
+
+## Feature Engineering
+
+DemandIQ transforms the dense daily product-demand panel into
+a machine-learning feature dataset.
+
+### Dataset Overview
+
+- Product-day records: 3,084,067
+- Unique products: 4,984
+- Date range: December 1, 2009 – December 9, 2011
+- Target variable: daily_units_sold
+- Engineered columns: 37
+
+### Feature Groups
+
+**Calendar Features**
+- Day of week, day of month, day of year
+- Week of year, month, quarter, year
+- Weekend, Saturday, Sunday and December indicators
+- Cyclical weekday and monthly encodings
+
+**Historical Demand Features**
+- Lag features: 1, 7, 14 and 28 days
+- Rolling means: 7, 14 and 28 days
+- Rolling standard deviations: 7, 14 and 28 days
+
+**Product Metadata**
+- Product stock code
+- Product description
+- Description missingness indicator
+
+### Data Leakage Prevention
+
+Historical demand features are constructed using shifted
+demand values so that the current prediction date's actual
+demand is excluded from lag and rolling calculations.
+
+Full-period product sales statistics are excluded from
+predictor metadata.
+
+Same-day transaction outcomes and the target variable
+must be excluded from model inputs.
+
+### Missing Data Handling
+
+- 64 products had missing descriptions.
+- 44,763 product-day records were affected.
+- Missing descriptions were represented as "Unknown".
+- A description_missing indicator preserves the original
+  missingness information.
+- Historical lag and rolling warm-up NaNs are retained.
+
+### Validation
+
+The independent feature validation script completed
+31 checks with 31 passing and 0 failing.
+
+Validation includes:
+- Row and product counts
+- Demand reconciliation
+- Duplicate product-date checks
+- Product metadata integrity
+- Calendar feature consistency
+- Lag and rolling missing-value counts
+- Non-negative demand features
+- Cyclical calendar feature checks

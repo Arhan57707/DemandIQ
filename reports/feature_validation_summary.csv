@@ -1,0 +1,32 @@
+validation,status,observed
+Expected total columns,PASS,37
+Required feature columns exist,PASS,All present
+Total row count,PASS,3084067
+Unique product count,PASS,4984
+Total demand preserved,PASS,11455912
+Description missing rows handled,PASS,0
+Description missingness flag count,PASS,44763
+Products with missing descriptions,PASS,64
+Description flags contain only 0 and 1,PASS,0
+Description flag consistency,PASS,0
+Dataset sorted by product and date,PASS,True
+No duplicate product-date rows,PASS,0
+Calendar values match dates,PASS,0
+Weekend flags correct,PASS,0
+Saturday flags correct,PASS,0
+Sunday flags correct,PASS,0
+December flags correct,PASS,0
+Cyclical features correct,PASS,0
+Transaction flags match recorded demand,PASS,0
+Lag and rolling features are non-negative,PASS,0
+Lag and rolling features contain no infinity,PASS,0
+lag_1 expected missing values,PASS,"actual=4,984, expected=4,984"
+lag_7 expected missing values,PASS,"actual=34,882, expected=34,882"
+lag_14 expected missing values,PASS,"actual=69,751, expected=69,751"
+lag_28 expected missing values,PASS,"actual=139,252, expected=139,252"
+rolling_mean_7 expected missing values,PASS,"actual=34,882, expected=34,882"
+rolling_std_7 expected missing values,PASS,"actual=34,882, expected=34,882"
+rolling_mean_14 expected missing values,PASS,"actual=69,751, expected=69,751"
+rolling_std_14 expected missing values,PASS,"actual=69,751, expected=69,751"
+rolling_mean_28 expected missing values,PASS,"actual=139,252, expected=139,252"
+rolling_std_28 expected missing values,PASS,"actual=139,252, expected=139,252"

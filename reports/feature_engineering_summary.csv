@@ -1,0 +1,11 @@
+metric,value
+total_rows,3084067
+total_columns,37
+unique_products,4984
+first_date,2009-12-01
+last_date,2011-12-09
+description_missing_products,64
+description_missing_rows,44763
+lag_features,4
+rolling_mean_features,3
+rolling_std_features,3
